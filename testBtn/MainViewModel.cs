@@ -39,41 +39,54 @@ namespace testBtn
         }
 
         public RelayCommand ChangeMessageCommand { get; }
-        public RelayCommand SecondMessageCommand { get; }
-        private bool isJishu = false;
-        private bool OisJishu = false;
+        public RelayCommand MouserOverCommand { get; }
+        public RelayCommand MouserClickCommand { get; }
+
         public MainViewModel()
         {
             Message = "Hello, MVVM!";
             OtherMessage = "Hello, Other!";
             ChangeMessageCommand = new RelayCommand(ChangeMessage);
-            SecondMessageCommand = new RelayCommand(OtherChangeMessage);
+            MouserOverCommand = new RelayCommand(MouserOverChange);
+            MouserClickCommand = new RelayCommand(MouserClickChange);
         }
 
         private void ChangeMessage()
         {
-            if (!isJishu)
+            int second = DateTime.Now.Second;
+            if (second % 2 == 0)
             {
                 Message = "Message changed!";
-                isJishu = true;
             }
             else
             {
                 Message = "Hello, MVVM!";
-                isJishu = false;
             }
         }
-        private void OtherChangeMessage()
+        private void MouserOverChange()
         {
-            if (!OisJishu)
+            int second = DateTime.Now.Second;
+
+            if (second % 2 == 0)
             {
-                OtherMessage = "Other changed!";
-                OisJishu = true;
+                OtherMessage = "over changed oushu!";
             }
             else
             {
-                OtherMessage = "Hello, Other!";
-                OisJishu = false;
+                OtherMessage = "over changed jishu!";
+            }
+        }
+        private void MouserClickChange()
+        {
+            int second = DateTime.Now.Second;
+
+            if (second % 2 == 0)
+            {
+                OtherMessage = "click changed oushu!";
+            }
+            else
+            {
+                OtherMessage = "click changed jishu!";
             }
         }
     }

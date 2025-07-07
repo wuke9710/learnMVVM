@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:testBtn"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -21,16 +22,22 @@
                     Command="{Binding ChangeMessageCommand}"/>
         </StackPanel>
         <StackPanel  Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text= "{Binding Message}" FontSize="16" Margin="10" 
-                       d:Text="Hello, MVVM!"/>
+            <TextBlock Text= "{Binding Message}" FontSize="16" Margin="10" d:Text="Hello, MVVM!"/>
         </StackPanel>
         <StackPanel  Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="Other" FontSize="16" Width="120" Height="40"
-                    Command="{Binding SecondMessageCommand}"/>
+            <Button Content="Other" FontSize="16" Width="120" Height="40">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseEnter">
+                        <i:InvokeCommandAction Command= "{Binding MouserOverCommand}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command= "{Binding MouserClickCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
         </StackPanel>
         <StackPanel  Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text= "{Binding OtherMessage}" FontSize="16" Margin="10" 
-                       d:Text="Hello, Other!"/>
+            <TextBlock Text= "{Binding OtherMessage}" FontSize="16" Margin="10" d:Text="Hello, Other!"/>
         </StackPanel>
     </Grid>
 </Window>
