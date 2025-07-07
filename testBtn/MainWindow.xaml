@@ -22,7 +22,8 @@
                     Command="{Binding ChangeMessageCommand}"/>
         </StackPanel>
         <StackPanel  Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text= "{Binding Message}" FontSize="16" Margin="10" d:Text="Hello, MVVM!"/>
+            <TextBlock  FontSize="16" Margin="10" d:Text="Hello, MVVM!"
+                        Text= "{Binding Message}"/>
         </StackPanel>
         <StackPanel  Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button Content="Other" FontSize="16" Width="120" Height="40">
@@ -37,7 +38,8 @@
             </Button>
         </StackPanel>
         <StackPanel  Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text= "{Binding OtherMessage}" FontSize="16" Margin="10" d:Text="Hello, Other!"/>
+            <TextBlock  FontSize="16" Margin="10" d:Text="Hello, Other!"
+                        Text= "{Binding OtherMessage}"/>
         </StackPanel>
     </Grid>
 </Window>
