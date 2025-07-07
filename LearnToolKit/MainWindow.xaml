@@ -29,10 +29,7 @@
                       SelectedItem="{Binding SelectedProduct, Mode=TwoWay}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Button Content="{Binding Name}" VerticalAlignment="Center" HorizontalAlignment="Center"
-                        Command="{Binding DataContext.EditProductCommand,
-                                  RelativeSource={RelativeSource AncestorType=Window}}"
-                        CommandParameter="{Binding .}" />
+                        <TextBlock Text="{Binding Name}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
