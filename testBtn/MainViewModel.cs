@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace testBtn
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : NotifyPropertyObject
     {
         private string _message;
+        private string _Othermessage;
 
         public string Message
         {
@@ -20,7 +21,19 @@ namespace testBtn
                 if (_message != value)
                 {
                     _message = value;
-                    OnPropertyChanged();
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        public string OtherMessage
+        {
+            get => _Othermessage;
+            set
+            {
+                if (_Othermessage != value)
+                {
+                    _Othermessage = value;
+                    NotifyPropertyChanged();
                 }
             }
         }
@@ -28,9 +41,11 @@ namespace testBtn
         public RelayCommand ChangeMessageCommand { get; }
         public RelayCommand SecondMessageCommand { get; }
         private bool isJishu = false;
+        private bool OisJishu = false;
         public MainViewModel()
         {
             Message = "Hello, MVVM!";
+            OtherMessage = "Hello, Other!";
             ChangeMessageCommand = new RelayCommand(ChangeMessage);
             SecondMessageCommand = new RelayCommand(OtherChangeMessage);
         }
@@ -50,23 +65,16 @@ namespace testBtn
         }
         private void OtherChangeMessage()
         {
-            if (!isJishu)
+            if (!OisJishu)
             {
-                Message = "Other changed!";
-                isJishu = true;
+                OtherMessage = "Other changed!";
+                OisJishu = true;
             }
             else
             {
-                Message = "Hello, Other!";
-                isJishu = false;
+                OtherMessage = "Hello, Other!";
+                OisJishu = false;
             }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
