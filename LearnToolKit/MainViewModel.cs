@@ -19,13 +19,6 @@ namespace LearnToolKit
         {
             Message = "Message changed!";
         }
-        public partial class Product : ObservableObject
-        {
-            [ObservableProperty]
-            private int id;
-            [ObservableProperty]
-            private string name = "123";
-        }
         public ObservableCollection<Product> Products { get; } = new()
         {
             new Product { Id = 1, Name = "Apple" },
