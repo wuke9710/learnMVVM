@@ -28,7 +28,7 @@ namespace testBtn
 
         public void Execute(object parameter)
         {
-            _execute();
+            _execute?.Invoke();
         }
     }
 }

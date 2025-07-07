@@ -26,11 +26,13 @@ namespace testBtn
         }
 
         public RelayCommand ChangeMessageCommand { get; }
+        public RelayCommand SecondMessageCommand { get; }
         private bool isJishu = false;
         public MainViewModel()
         {
             Message = "Hello, MVVM!";
             ChangeMessageCommand = new RelayCommand(ChangeMessage);
+            SecondMessageCommand = new RelayCommand(OtherChangeMessage);
         }
 
         private void ChangeMessage()
@@ -43,6 +45,19 @@ namespace testBtn
             else
             {
                 Message = "Hello, MVVM!";
+                isJishu = false;
+            }
+        }
+        private void OtherChangeMessage()
+        {
+            if (!isJishu)
+            {
+                Message = "Other changed!";
+                isJishu = true;
+            }
+            else
+            {
+                Message = "Hello, Other!";
                 isJishu = false;
             }
         }
