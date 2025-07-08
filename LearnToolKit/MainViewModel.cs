@@ -25,13 +25,18 @@ namespace LearnToolKit
             new Product { Id = 2, Name = "Banana" }
         };
 
-        partial void OnSelectedProductChanged(Product? value)
+        [RelayCommand]
+        private void MyClick(Product? value)
         {
             if (value is null)
                 return;
-            if (!value.Name.EndsWith("Click"))
+            if(!value.Name.EndsWith("Click"))
             {
                 value.Name += "Click";
+            }
+            else
+            {
+                value.Name = value.Name.Substring(0, value.Name.Length - "Click".Length);
             }
         }
 
